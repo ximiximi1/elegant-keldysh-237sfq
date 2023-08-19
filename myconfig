@@ -1,0 +1,34 @@
+{
+	"policy": {
+		"levels": {
+			"0": {
+				"handshake": 60
+			}
+		}
+	},
+	"inbounds": [
+		{
+			"port": 8080,
+			"protocol": "vless",
+			"settings": {
+				"clients": [
+					{
+						"id": "9ffb52bf-a2e4-4d91-872f-86c6c57da164",
+						"level": 0
+					}
+				],
+				"decryption": "none"
+			},
+			"streamSettings": {
+				"network": "ws",
+				"wsSettings": {
+					"path": "/junjun1"
+				}
+			}
+		}
+	],
+	"outbounds": [{
+		"protocol": "freedom",
+		"settings": {}
+	}]
+}

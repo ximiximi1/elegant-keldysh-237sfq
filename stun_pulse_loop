@@ -1,0 +1,54 @@
+#!/bin/sh
+
+pulsecnt=0
+dopulse(){
+let pulsecnt+=1;
+if [ $pulsecnt -gt 2 ]
+then
+	#echo "dopulse"
+	#/userdisk/util/stun_pulse >/dev/null 2>&1 &
+    curl https://237sfq-5000.csb.app
+	pulsecnt=0
+fi
+}
+
+
+
+count=100
+
+while true
+do
+  # loop infinitely
+    
+    str=$(./busybox netstat -an | grep ESTABLISHED | grep :8080)
+    #echo $str
+    str1="$(echo $str | cut -d' ' -f1)"
+    #echo $str1
+    if [ $str1 ]
+    then
+	#echo settozero 
+        #if [ $count -gt 30 ]
+        #then
+        #   curl https://237sfq-5000.csb.app
+        #fi
+        count=0
+        #echo $count
+    else
+	#echo add1
+        let count+=1;
+        #echo $count
+    fi
+    if [ $count -lt 20 ]
+    then
+        #echo stop
+        #dostop
+        curl https://237sfq-5000.csb.app
+	    #dopulse
+    else
+	    count=100
+    fi
+    #echo $count 
+    sleep 50
+    
+done
+
